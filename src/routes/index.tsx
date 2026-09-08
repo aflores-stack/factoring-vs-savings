@@ -1,8 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { BarChartCompare } from "@/components/BarChartCompare";
+import { Button } from "@/components/ui/button";
 
 const REGISTRO =
   "https://www.prestamype.com/registro?ref=cotizador_invertir&type_investment=factoring";
+const PRESTAMYPE = "https://www.prestamype.com";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -47,26 +50,38 @@ const beneficios = [
   {
     title: "Rentabilidad",
     text: "Podrás ganar con retornos anuales estimados hasta 20%.",
+    icon: "icon-shield-check-im",
+    paths: 4,
   },
   {
     title: "Diversificación",
     text: "Rentabiliza tu dinero en empresas de distintas industrias, así podrás reducir el riesgo de tu portafolio.",
+    icon: "icon-bag-coins-stats-im",
+    paths: 9,
   },
   {
     title: "Seguridad",
     text: "Prestamype es una Fintech con más de 10 años de experiencia y que trabaja de la mano con CAVALI.",
+    icon: "icon-hand-coin-im",
+    paths: 3,
   },
   {
     title: "Experiencia",
     text: "Prestamype se posiciona como fintech líder en Perú desde 2017, con 1600 millones de soles invertidos.",
+    icon: "icon-bag-coins-time-im",
+    paths: 6,
   },
   {
     title: "Respaldo",
     text: "Esta inversión cuenta con el respaldo de un título valor registrado en CAVALI.",
+    icon: "icon-bag-coins-time-im",
+    paths: 6,
   },
   {
     title: "Asesoría personalizada",
     text: "Si tienes dudas, un ejecutivo podrá ayudarte en el proceso de registro e inversión.",
+    icon: "icon-bag-coins-time-im",
+    paths: 6,
   },
 ];
 
@@ -141,9 +156,139 @@ const aliados = [
   { alt: "Equifax", src: "https://prestamype.s3.amazonaws.com/our_allies/khtyd08b-equifax.jpg" },
 ];
 
+const menuGroups = [
+  {
+    label: "Financiamiento",
+    icon: "https://d14bodb4yrsx8y.cloudfront.net/assets/img/icon_menu_01.1d44b81.svg",
+    links: [
+      ["Préstamos", `${PRESTAMYPE}/prestamos`],
+      ["Financiamiento mediante Fideicomiso en Titulización", `${PRESTAMYPE}/fideicomiso`],
+      ["Crédito hipotecario", `${PRESTAMYPE}/creditos-hipotecarios`],
+      ["Factoring", `${PRESTAMYPE}/factoring`],
+      ["Confirming", `${PRESTAMYPE}/confirming`],
+      ["Gestión de facturas", `${PRESTAMYPE}/gestion-de-facturas`],
+    ],
+  },
+  {
+    label: "Inversiones",
+    icon: "https://d14bodb4yrsx8y.cloudfront.net/assets/img/icon_menu_02.7d45215.svg",
+    links: [
+      ["Invertir en préstamos", `${PRESTAMYPE}/invertir-prestamos`],
+      ["Invertir en factoring", `${PRESTAMYPE}/invertir-factoring`],
+      ["Gestora de Fondos Privados", `${PRESTAMYPE}/gestora-de-fondos`],
+      ["Cambio Seguro", "https://cambioseguro.com/"],
+      ["Tandia", "https://tandiashop.com/?utm_source=web_prestamype&utm_medium=btn_ref_to_web_tandiashop"],
+      ["Conocer más", `${PRESTAMYPE}/invertir`],
+    ],
+  },
+  {
+    label: "Ver más",
+    icon: "https://d14bodb4yrsx8y.cloudfront.net/assets/img/icon_menu_03.9f2583e.svg",
+    links: [
+      ["Broker", `${PRESTAMYPE}/brokers-prestamos`],
+      ["Referidos", `${PRESTAMYPE}/recomendacion`],
+      ["Nosotros", `${PRESTAMYPE}/nosotros`],
+      ["Artículos", `${PRESTAMYPE}/articulos`],
+      ["Campañas vigentes", "https://page.prestamype.com/productos-tyc"],
+      ["Trabaja con nosotros", "https://grupoprestamype.hiringroom.com/jobs"],
+    ],
+  },
+] as const;
+
+function BenefitIcon({ icon, paths }: { icon: string; paths: number }) {
+  return (
+    <span className={`benefit-icon ${icon}`} aria-hidden="true">
+      {Array.from({ length: paths }, (_, index) => (
+        <span key={index} className={`path${index + 1}`} />
+      ))}
+    </span>
+  );
+}
+
+function Header() {
+  return (
+    <header className="relative z-50 border-b border-border bg-card">
+      <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5">
+        <a href={PRESTAMYPE} aria-label="Ir al inicio de Prestamype">
+          <img
+            src="https://d14bodb4yrsx8y.cloudfront.net/static/logo.svg"
+            alt="Prestamype"
+            className="h-9 w-auto"
+          />
+        </a>
+
+        <nav className="hidden h-full items-center gap-7 lg:flex" aria-label="Navegación principal">
+          {menuGroups.map((group) => (
+            <div key={group.label} className="group relative flex h-full items-center">
+              <a
+                href={group.links[0][1]}
+                className="flex items-center gap-1 text-sm font-semibold text-navy transition-colors hover:text-primary-dark"
+              >
+                {group.label}
+                <ChevronDown className="h-4 w-4" aria-hidden="true" />
+              </a>
+              <div className="invisible absolute top-[64px] left-1/2 w-72 -translate-x-1/2 border border-border bg-card p-5 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
+                <div className="mb-4 flex items-center gap-3">
+                  <img src={group.icon} alt="" className="h-10 w-10" />
+                  <span className="font-semibold text-navy">{group.label}</span>
+                </div>
+                <div className="space-y-3">
+                  {group.links.map(([label, href]) => (
+                    <a key={label} href={href} className="block text-sm text-muted-foreground hover:text-primary-dark">
+                      {label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+          <a href={`${PRESTAMYPE}/centro-de-asistencia/`} className="text-sm font-semibold text-navy hover:text-primary-dark">
+            Centro de ayuda
+          </a>
+        </nav>
+
+        <div className="hidden items-center gap-3 lg:flex">
+          <Button asChild variant="outline" className="h-10 border-primary text-primary-dark hover:text-primary-dark">
+            <a href={`${PRESTAMYPE}/login`}>Iniciar sesión</a>
+          </Button>
+          <Button asChild className="h-10">
+            <a href={REGISTRO}>Regístrate</a>
+          </Button>
+        </div>
+
+        <details className="mobile-menu relative lg:hidden">
+          <summary className="flex h-10 w-10 cursor-pointer list-none items-center justify-center text-navy" aria-label="Abrir menú">
+            <Menu className="menu-open h-6 w-6" />
+            <X className="menu-close hidden h-6 w-6" />
+          </summary>
+          <div className="absolute top-[55px] right-[-20px] w-screen border-t border-border bg-card px-5 py-5 shadow-lg">
+            {menuGroups.map((group) => (
+              <details key={group.label} className="border-b border-border py-3">
+                <summary className="flex cursor-pointer list-none items-center justify-between font-semibold text-navy">
+                  <span className="flex items-center gap-3"><img src={group.icon} alt="" className="h-8 w-8" />{group.label}</span>
+                  <ChevronDown className="h-4 w-4" />
+                </summary>
+                <div className="space-y-3 pt-3 pl-11">
+                  {group.links.map(([label, href]) => <a key={label} href={href} className="block text-sm text-muted-foreground">{label}</a>)}
+                </div>
+              </details>
+            ))}
+            <a href={`${PRESTAMYPE}/centro-de-asistencia/`} className="block py-4 font-semibold text-navy">Centro de ayuda</a>
+            <div className="mt-2 grid grid-cols-2 gap-3">
+              <Button asChild variant="outline"><a href={`${PRESTAMYPE}/login`}>Iniciar sesión</a></Button>
+              <Button asChild><a href={REGISTRO}>Regístrate</a></Button>
+            </div>
+          </div>
+        </details>
+      </div>
+    </header>
+  );
+}
+
 function Landing() {
   return (
     <main className="overflow-x-hidden">
+      <Header />
       {/* Hero */}
       <section className="bg-hero-gradient">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 md:grid-cols-2 md:py-24">
@@ -221,6 +366,7 @@ function Landing() {
               proceso.
             </p>
             <div className="mt-6 inline-flex items-center gap-3 rounded-xl bg-muted px-5 py-3">
+              <span className="icon-medal-check-im text-2xl" aria-hidden="true" />
               <span className="text-sm text-muted-foreground">Registrados en</span>
               <span className="text-lg font-bold text-navy">Cavali</span>
             </div>
@@ -240,7 +386,7 @@ function Landing() {
           <div className="grid gap-8 sm:grid-cols-2">
             {beneficios.map((b) => (
               <div key={b.title}>
-                <div className="bg-green-gradient mb-3 h-10 w-10 rounded-xl" />
+                <BenefitIcon icon={b.icon} paths={b.paths} />
                 <h3 className="text-base font-semibold">{b.title}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{b.text}</p>
               </div>
@@ -278,7 +424,7 @@ function Landing() {
             "Prestamype gestiona la anotación en cuenta de la factura a través de Cavali para registrar una obligación de pago y realizar la cobranza posteriormente.",
           ].map((t) => (
             <li key={t} className="flex gap-3">
-              <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary" />
+              <span className="icon-checkmark-outline-im mt-0.5 shrink-0 text-xl text-primary" aria-hidden="true" />
               <span>{t}</span>
             </li>
           ))}
@@ -303,6 +449,7 @@ function Landing() {
       <section className="mx-auto max-w-6xl px-5 py-16">
         <div className="grid gap-6 md:grid-cols-2">
           <div className="rounded-2xl border border-border p-7">
+            <BenefitIcon icon="icon-message-chat-im" paths={2} />
             <h3 className="text-lg font-semibold">¿Necesitas comunicarte con un ejecutivo?</h3>
             <a
               className="mt-2 inline-block font-semibold text-primary-dark hover:underline"
@@ -312,6 +459,7 @@ function Landing() {
             </a>
           </div>
           <div className="rounded-2xl border border-border p-7">
+            <BenefitIcon icon="icon-invoice-im" paths={2} />
             <h3 className="text-lg font-semibold">También te puede interesar</h3>
             <a
               className="mt-2 inline-block font-semibold text-primary-dark hover:underline"
