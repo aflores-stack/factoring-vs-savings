@@ -141,6 +141,16 @@
 .icon-bag-coins-time-im .path4::before { color: var(--primary); content: "\e91d"; margin-left: -1em; }
 .icon-bag-coins-time-im .path5::before { color: var(--primary); content: "\e91e"; margin-left: -1em; }
 .icon-bag-coins-time-im .path6::before { color: var(--primary); content: "\e91f"; margin-left: -1em; }
+.icon-message-chat-im .path1::before { color: oklch(0.93 0.12 145); content: "\eae0"; }
+.icon-message-chat-im .path2::before { color: var(--primary); content: "\eae1"; margin-left: -1em; }
+.icon-invoice-im .path1::before { color: oklch(0.93 0.12 145); content: "\ead3"; }
+.icon-invoice-im .path2::before { color: var(--primary); content: "\ead4"; margin-left: -1em; }
+.icon-medal-check-im,
+.icon-checkmark-outline-im {
+  font-family: "Prestamype Icons";
+}
+.icon-medal-check-im::before { color: var(--primary); content: "\eadd"; }
+.icon-checkmark-outline-im::before { content: "\e954"; }
 
 @utility bg-hero-gradient {
   background-image: var(--gradient-hero);

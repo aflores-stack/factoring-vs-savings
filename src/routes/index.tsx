@@ -161,10 +161,12 @@ const menuGroups = [
     label: "Financiamiento",
     icon: "https://d14bodb4yrsx8y.cloudfront.net/assets/img/icon_menu_01.1d44b81.svg",
     links: [
-      ["Préstamos con garantía hipotecaria", `${PRESTAMYPE}/prestamos`],
-      ["Financiamiento mediante Fideicomiso", `${PRESTAMYPE}/fideicomiso`],
+      ["Préstamos", `${PRESTAMYPE}/prestamos`],
+      ["Financiamiento mediante Fideicomiso en Titulización", `${PRESTAMYPE}/fideicomiso`],
+      ["Crédito hipotecario", `${PRESTAMYPE}/creditos-hipotecarios`],
       ["Factoring", `${PRESTAMYPE}/factoring`],
       ["Confirming", `${PRESTAMYPE}/confirming`],
+      ["Gestión de facturas", `${PRESTAMYPE}/gestion-de-facturas`],
     ],
   },
   {
@@ -173,16 +175,22 @@ const menuGroups = [
     links: [
       ["Invertir en préstamos", `${PRESTAMYPE}/invertir-prestamos`],
       ["Invertir en factoring", `${PRESTAMYPE}/invertir-factoring`],
-      ["Gestora de Fondos Privados", `${PRESTAMYPE}/gestora-fondos`],
+      ["Gestora de Fondos Privados", `${PRESTAMYPE}/gestora-de-fondos`],
+      ["Cambio Seguro", "https://cambioseguro.com/"],
+      ["Tandia", "https://tandiashop.com/?utm_source=web_prestamype&utm_medium=btn_ref_to_web_tandiashop"],
+      ["Conocer más", `${PRESTAMYPE}/invertir`],
     ],
   },
   {
-    label: "Otras soluciones",
+    label: "Ver más",
     icon: "https://d14bodb4yrsx8y.cloudfront.net/assets/img/icon_menu_03.9f2583e.svg",
     links: [
-      ["Gestión de facturas", `${PRESTAMYPE}/gestion-facturas`],
-      ["Cambio Seguro", "https://cambioseguro.com"],
-      ["Tandia", "https://tandia.pe"],
+      ["Broker", `${PRESTAMYPE}/brokers-prestamos`],
+      ["Referidos", `${PRESTAMYPE}/recomendacion`],
+      ["Nosotros", `${PRESTAMYPE}/nosotros`],
+      ["Artículos", `${PRESTAMYPE}/articulos`],
+      ["Campañas vigentes", "https://page.prestamype.com/productos-tyc"],
+      ["Trabaja con nosotros", "https://grupoprestamype.hiringroom.com/jobs"],
     ],
   },
 ] as const;
@@ -234,10 +242,7 @@ function Header() {
               </div>
             </div>
           ))}
-          <a href={`${PRESTAMYPE}/nosotros`} className="text-sm font-semibold text-navy hover:text-primary-dark">
-            Conócenos
-          </a>
-          <a href={`${PRESTAMYPE}/centro-de-asistencia`} className="text-sm font-semibold text-navy hover:text-primary-dark">
+          <a href={`${PRESTAMYPE}/centro-de-asistencia/`} className="text-sm font-semibold text-navy hover:text-primary-dark">
             Centro de ayuda
           </a>
         </nav>
@@ -268,8 +273,7 @@ function Header() {
                 </div>
               </details>
             ))}
-            <a href={`${PRESTAMYPE}/nosotros`} className="block border-b border-border py-4 font-semibold text-navy">Conócenos</a>
-            <a href={`${PRESTAMYPE}/centro-de-asistencia`} className="block py-4 font-semibold text-navy">Centro de ayuda</a>
+            <a href={`${PRESTAMYPE}/centro-de-asistencia/`} className="block py-4 font-semibold text-navy">Centro de ayuda</a>
             <div className="mt-2 grid grid-cols-2 gap-3">
               <Button asChild variant="outline"><a href={`${PRESTAMYPE}/login`}>Iniciar sesión</a></Button>
               <Button asChild><a href={REGISTRO}>Regístrate</a></Button>
@@ -362,6 +366,7 @@ function Landing() {
               proceso.
             </p>
             <div className="mt-6 inline-flex items-center gap-3 rounded-xl bg-muted px-5 py-3">
+              <span className="icon-medal-check-im text-2xl" aria-hidden="true" />
               <span className="text-sm text-muted-foreground">Registrados en</span>
               <span className="text-lg font-bold text-navy">Cavali</span>
             </div>
@@ -419,7 +424,7 @@ function Landing() {
             "Prestamype gestiona la anotación en cuenta de la factura a través de Cavali para registrar una obligación de pago y realizar la cobranza posteriormente.",
           ].map((t) => (
             <li key={t} className="flex gap-3">
-              <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary" />
+              <span className="icon-checkmark-outline-im mt-0.5 shrink-0 text-xl text-primary" aria-hidden="true" />
               <span>{t}</span>
             </li>
           ))}
@@ -444,6 +449,7 @@ function Landing() {
       <section className="mx-auto max-w-6xl px-5 py-16">
         <div className="grid gap-6 md:grid-cols-2">
           <div className="rounded-2xl border border-border p-7">
+            <BenefitIcon icon="icon-message-chat-im" paths={2} />
             <h3 className="text-lg font-semibold">¿Necesitas comunicarte con un ejecutivo?</h3>
             <a
               className="mt-2 inline-block font-semibold text-primary-dark hover:underline"
@@ -453,6 +459,7 @@ function Landing() {
             </a>
           </div>
           <div className="rounded-2xl border border-border p-7">
+            <BenefitIcon icon="icon-invoice-im" paths={2} />
             <h3 className="text-lg font-semibold">También te puede interesar</h3>
             <a
               className="mt-2 inline-block font-semibold text-primary-dark hover:underline"
