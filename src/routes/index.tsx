@@ -2,6 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { BarChartCompare } from "@/components/BarChartCompare";
 import { Button } from "@/components/ui/button";
+import rentabilidadIcon from "@/assets/benefits/rentabilidad.png.asset.json";
+import diversificacionIcon from "@/assets/benefits/diversificacion.png.asset.json";
+import seguridadIcon from "@/assets/benefits/seguridad.png.asset.json";
+import experienciaIcon from "@/assets/benefits/experiencia.png.asset.json";
+import respaldoIcon from "@/assets/benefits/respaldo.png.asset.json";
+import asesoriaIcon from "@/assets/benefits/asesoria.png.asset.json";
 
 const REGISTRO =
   "https://www.prestamype.com/registro?ref=cotizador_invertir&type_investment=factoring";
@@ -50,38 +56,32 @@ const beneficios = [
   {
     title: "Rentabilidad",
     text: "Podrás ganar con retornos anuales estimados hasta 20%.",
-    icon: "icon-shield-check-im",
-    paths: 4,
+    image: rentabilidadIcon.url,
   },
   {
     title: "Diversificación",
     text: "Rentabiliza tu dinero en empresas de distintas industrias, así podrás reducir el riesgo de tu portafolio.",
-    icon: "icon-bag-coins-stats-im",
-    paths: 9,
+    image: diversificacionIcon.url,
   },
   {
     title: "Seguridad",
     text: "Prestamype es una Fintech con más de 10 años de experiencia y que trabaja de la mano con CAVALI.",
-    icon: "icon-hand-coin-im",
-    paths: 3,
+    image: seguridadIcon.url,
   },
   {
     title: "Experiencia",
     text: "Prestamype se posiciona como fintech líder en Perú desde 2017, con 1600 millones de soles invertidos.",
-    icon: "icon-bag-coins-time-im",
-    paths: 6,
+    image: experienciaIcon.url,
   },
   {
     title: "Respaldo",
     text: "Esta inversión cuenta con el respaldo de un título valor registrado en CAVALI.",
-    icon: "icon-bag-coins-time-im",
-    paths: 6,
+    image: respaldoIcon.url,
   },
   {
     title: "Asesoría personalizada",
     text: "Si tienes dudas, un ejecutivo podrá ayudarte en el proceso de registro e inversión.",
-    icon: "icon-bag-coins-time-im",
-    paths: 6,
+    image: asesoriaIcon.url,
   },
 ];
 
@@ -386,7 +386,13 @@ function Landing() {
           <div className="grid gap-8 sm:grid-cols-2">
             {beneficios.map((b) => (
               <div key={b.title}>
-                <BenefitIcon icon={b.icon} paths={b.paths} />
+                <img
+                  src={b.image}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  className="mb-4 h-20 w-20 object-contain"
+                />
                 <h3 className="text-base font-semibold">{b.title}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{b.text}</p>
               </div>
