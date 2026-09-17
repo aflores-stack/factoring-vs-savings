@@ -365,10 +365,19 @@ function Landing() {
               inversión más una ganancia. Ayudas a las PYMEs financieramente y ganas dinero en el
               proceso.
             </p>
-            <div className="mt-6 inline-flex items-center gap-3 rounded-xl bg-muted px-5 py-3">
-              <span className="icon-medal-check-im text-2xl" aria-hidden="true" />
+            <div className="mt-6 inline-flex items-center gap-2 rounded-lg bg-muted px-3 py-2">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 1024 1024"
+                className="h-6 w-6 shrink-0 fill-primary"
+              >
+                <path
+                  transform="translate(0 960) scale(1 -1)"
+                  d="M510 960 422 897 316 919 256 828 150 808 130 702 39 642 61 537 0 447 61 357 39 251 130 192 150 85 256 65 316-25 422-3 512-64 602-3 708-25 768 65 874 85 894 192 985 251 963 357 1024 447 963 537 985 642 893 703 873 810 767 830 707 921 601 899 510 960ZM510 816Q565 816 617.5 800T715 754Q760 724 795 681.5T851 589Q871 539 876.5 484.5T872 377Q861 323 835 275T771 189Q732 150 684 124.5T582 88Q529 78 474.5 83T370 109Q319 130 277 164.5T204 244Q174 290 158 342T142 448Q142 521 170 588.5T250 708Q302 760 369.5 788T510 816ZM510 784Q461 784 413 769.5T323 728Q282 700 250.5 661.5T199 577Q180 531 175 481.5T180 383Q190 334 213.5 290T272 211Q307 176 351 152.5T444 119Q493 110 543 114.5T639 138Q685 157 723.5 188.5T790 262Q817 303 831.5 351T846 448Q846 515 820.5 576.5T748 685Q700 731 638.5 756.5T510 782V784ZM686 611 755 543 721 509 466 254 268 427 331 499 367 467 462 385 653 576 686 611Z"
+                />
+              </svg>
               <span className="text-sm text-muted-foreground">Registrados en</span>
-              <span className="text-lg font-bold text-navy">Cavali</span>
+              <span className="text-xl font-semibold text-navy">Cavali</span>
             </div>
           </div>
         </div>
