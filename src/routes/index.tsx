@@ -365,10 +365,16 @@ function Landing() {
               inversión más una ganancia. Ayudas a las PYMEs financieramente y ganas dinero en el
               proceso.
             </p>
-            <div className="mt-6 inline-flex items-center gap-3 rounded-xl bg-muted px-5 py-3">
-              <span className="icon-medal-check-im text-2xl" aria-hidden="true" />
+            <div className="mt-6 inline-flex items-center gap-2 rounded-lg bg-muted px-3 py-2">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 1024 1024"
+                className="h-6 w-6 shrink-0 fill-primary"
+              >
+                <path d="M510 0 422 63 316 41l-60 91-106 20-20 106-91 60 22 105L0 513l61 90-22 106 91 59 20 107 106 20 60 90 106-22 90 61 90-61 106 22 60-90 106-20 20-107 91-59-22-106 61-90-61-90 22-105-91-61-20-107-106-20-60-91-106 22L510 0Zm0 144c55 0 107 16 152 46 46 30 81 73 102 123 20 50 26 105 16 158-11 54-37 102-75 140-39 39-87 64-135 90-48 25-102 36-156 36-53 0-108-5-158-26-51-21-93-56-124-101-30-46-46-98-46-152 0-73 28-141 80-193 52-52 120-80 193-80Zm0 32c-49 0-97 15-139 42-41 28-73 66-93 112-19 46-24 96-14 145 10 49 34 93 69 128 35 35 79 59 128 69 49 9 99 5 145-14 46-19 84-51 112-93 27-41 42-89 42-138 0-67-26-128-73-175-48-46-109-72-176-72v-4Zm176 173 69 68-34 34-255 255-198-173 63-72 36 32 95 82 191-191 33-35Z" />
+              </svg>
               <span className="text-sm text-muted-foreground">Registrados en</span>
-              <span className="text-lg font-bold text-navy">Cavali</span>
+              <span className="text-xl font-semibold text-navy">Cavali</span>
             </div>
           </div>
         </div>
