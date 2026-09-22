@@ -143,7 +143,6 @@ const comparativa = [
     factoring: "Hasta 20% anual",
   },
   { c: "Plazos", ahorro: "Disponibilidad inmediata", factoring: "15 a 180 días" },
-  { c: "Riesgo", ahorro: "Bajo", factoring: "Medio" },
   {
     c: "Respaldo",
     ahorro: "Fondo de Seguro de Depósitos (FSD)",
